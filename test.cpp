@@ -120,3 +120,28 @@ TEST(MergeSortTest, UjemneZDuplikatami)
     for (int i = 0; i < 6; i++)
         EXPECT_EQ(tab[i], oczekiwane[i]);
 }
+
+// 10.
+TEST(MergeSortTest, UjemneDodatnieIDuplikaty)
+{
+    int tab[] = { -2, 3, -2, 5, 3, -1, 0, 5 };
+    int oczekiwane[] = { -2, -2, -1, 0, 3, 3, 5, 5 };
+
+    MergeSort<int> sortowanie;
+    sortowanie.sortuj(tab, 8);
+
+    for (int i = 0; i < 8; i++)
+        EXPECT_EQ(tab[i], oczekiwane[i]);
+}
+
+// 11.
+TEST(MergeSortTest, DwaElementyRosnaco)
+{
+    int tab[] = { 1, 2 };
+
+    MergeSort<int> sortowanie;
+    sortowanie.sortuj(tab, 2);
+
+    EXPECT_EQ(tab[0], 1);
+    EXPECT_EQ(tab[1], 2);
+}
