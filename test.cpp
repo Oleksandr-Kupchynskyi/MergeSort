@@ -47,3 +47,39 @@ TEST(MergeSortTest, TablicaLosowa)
     for (int i = 0; i < 8; i++)
         EXPECT_EQ(tab[i], oczekiwane[i]);
 }
+
+// 4.
+TEST(MergeSortTest, TylkoLiczbyUjemne)
+{
+    int tab[] = { -5, -1, -9, -3, -7 };
+    int oczekiwane[] = { -9, -7, -5, -3, -1 };
+
+    MergeSort<int> sortowanie;
+    sortowanie.sortuj(tab, 5);
+
+    for (int i = 0; i < 5; i++)
+        EXPECT_EQ(tab[i], oczekiwane[i]);
+}
+
+// 5.
+TEST(MergeSortTest, LiczbyUjemneIDodatnie)
+{
+    int tab[] = { -3, 5, -1, 8, 0, -7, 2 };
+    int oczekiwane[] = { -7, -3, -1, 0, 2, 5, 8 };
+
+    MergeSort<int> sortowanie;
+    sortowanie.sortuj(tab, 7);
+
+    for (int i = 0; i < 7; i++)
+        EXPECT_EQ(tab[i], oczekiwane[i]);
+}
+
+// 6.
+TEST(MergeSortTest, PustaTablica)
+{
+    int* tab = nullptr;
+
+    MergeSort<int> sortowanie;
+
+    EXPECT_NO_THROW(sortowanie.sortuj(tab, 0));
+}
