@@ -83,3 +83,40 @@ TEST(MergeSortTest, PustaTablica)
 
     EXPECT_NO_THROW(sortowanie.sortuj(tab, 0));
 }
+
+// 7.
+TEST(MergeSortTest, JedenElement)
+{
+    int tab[] = { 42 };
+
+    MergeSort<int> sortowanie;
+    sortowanie.sortuj(tab, 1);
+
+    EXPECT_EQ(tab[0], 42);
+}
+
+// 8.
+TEST(MergeSortTest, TablicaZDuplikatami)
+{
+    int tab[] = { 4, 2, 4, 1, 3, 2 };
+    int oczekiwane[] = { 1, 2, 2, 3, 4, 4 };
+
+    MergeSort<int> sortowanie;
+    sortowanie.sortuj(tab, 6);
+
+    for (int i = 0; i < 6; i++)
+        EXPECT_EQ(tab[i], oczekiwane[i]);
+}
+
+// 9.
+TEST(MergeSortTest, UjemneZDuplikatami)
+{
+    int tab[] = { -3, -1, -3, -5, -1, -2 };
+    int oczekiwane[] = { -5, -3, -3, -2, -1, -1 };
+
+    MergeSort<int> sortowanie;
+    sortowanie.sortuj(tab, 6);
+
+    for (int i = 0; i < 6; i++)
+        EXPECT_EQ(tab[i], oczekiwane[i]);
+}
