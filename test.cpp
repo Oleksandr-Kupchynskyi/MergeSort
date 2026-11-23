@@ -145,3 +145,52 @@ TEST(MergeSortTest, DwaElementyRosnaco)
     EXPECT_EQ(tab[0], 1);
     EXPECT_EQ(tab[1], 2);
 }
+
+// 12.
+TEST(MergeSortTest, DuzaTablica)
+{
+    const int rozmiar = 150;
+    int tab[rozmiar];
+
+    for (int i = 0; i < rozmiar; i++)
+    {
+        tab[i] = rozmiar - i;
+    }
+
+    MergeSort<int> sortowanie;
+    sortowanie.sortuj(tab, rozmiar);
+
+    for (int i = 0; i < rozmiar; i++)
+    {
+        EXPECT_EQ(tab[i], i + 1);
+    }
+}
+
+// 13.
+TEST(MergeSortTest, DuzaTablicaUjemneDodatnieDuplikaty)
+{
+    const int rozmiar = 200;
+    int tab[rozmiar];
+
+    for (int i = 0; i < rozmiar; i++)
+    {
+        tab[i] = (i % 21) - 10;
+    }
+
+    int oczekiwane[rozmiar];
+
+    for (int i = 0; i < rozmiar; i++)
+    {
+        oczekiwane[i] = tab[i];
+    }
+
+    sort(oczekiwane, oczekiwane + rozmiar);
+
+    MergeSort<int> sortowanie;
+    sortowanie.sortuj(tab, rozmiar);
+
+    for (int i = 0; i < rozmiar; i++)
+    {
+        EXPECT_EQ(tab[i], oczekiwane[i]);
+    }
+}
